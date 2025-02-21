@@ -1,0 +1,21 @@
+button{
+  outline: none;
+  border: none;
+}
+
+input{
+  border: none;
+  outline: none;
+}
+
+textarea{
+line-height: 20px;
+}
+
+.clickable{
+cursor: pointer;
+}
+
+.tilt-14deg{
+transform: rotate(14deg);
+}

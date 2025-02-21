@@ -1,0 +1,42 @@
+import authImage from "../../assets/images/authImage.png";
+import logoName from "../../assets/images/logoName.svg";
+import CustomSvg from "../customSvg/CustomSvg";
+
+function Login() {
+  return (
+    <div className="d-flex">
+      <div className="d-flex flex-column align-items-center justify-content-center">
+        <div>
+          <img src={logoName} />
+          <div className="fw-700 ff-43">Let’s Get the Party Started!</div>
+          <div className="d-flex align-items-center justify-content-between">
+            <button>
+              <CustomSvg name="google" />
+            </button>
+            <button>
+              <CustomSvg name="apple" />
+            </button>
+          </div>
+          <div>Or</div>
+        </div>
+        <div>
+          <Field
+            type={passwordVisible ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            style={{
+              backgroundColor: "#F3F3F3",
+              fontSize: "17px",
+              width: "100%",
+            }}
+          />
+        </div>
+      </div>
+      <div>
+        <img src={authImage} />
+      </div>
+    </div>
+  );
+}
+
+export default Login;

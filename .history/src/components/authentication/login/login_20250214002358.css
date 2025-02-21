@@ -1,0 +1,8 @@
+.authImage {
+  /* width: 700px; */
+}
+@media (maxWidth: 1300px) {
+  .authImage{
+    display: none !important;
+  }
+}

@@ -1,0 +1,18 @@
+*, *::before, *::after{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+
+      /* BACKGROUND */
+.background-ff{
+  background-color: #fff;
+}
+.background-00{
+  background-color: #000;
+}
+.background-a0{
+  background-color: #A04D07;
+}
