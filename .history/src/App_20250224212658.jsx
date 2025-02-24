@@ -8,7 +8,6 @@ import RecoverAccountEmail from "./components/authentication/recoverAccount/reco
 import RecoverAccountDetails from "./components/authentication/recoverAccount/recoverAccountDetails";
 import RecoveredAccount from "./components/authentication/recoverAccount/recoveredAccount";
 import ScrollToTop from "./components/scroll/ScrollToTop";
-import AboutUs from "./components/aboutUs/aboutUs";
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
           {/* MAIN ROUTE */}
 
           <Route path="/" element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/about-us" element={<Home />} />
 
           {/* AUTH ROUTE */}
           <Route path="/login" element={<Login />} />

@@ -3,7 +3,7 @@ import ourResources from "../../assets/images/ourResources.png";
 
 function MergingTradition() {
   return (
-    <div className="mt-4 container-adjustment">
+    <div className="mt-4 container-adjustment" id="aboutUs">
       <div>
         <div className="d-flex align-items-center justify-content-between flex-wrap flex-lg-nowrap">
           <div className="fw-500 fs-43 col-12 col-lg-5">

@@ -23,6 +23,7 @@ function Navigation() {
         >
           Home
         </NavLink>
+        <a href="aboutUs"></a>
         <NavLink
         // to="/about-us"
           style={({ isActive }) => ({
@@ -104,7 +105,7 @@ function Navigation() {
       >
         <Offcanvas.Header closeButton></Offcanvas.Header>
         <Offcanvas.Body>
-          <div style={{borderRadius:"20px"}} className="bg-ff pt-4 d-flex flex-column d-lg-flex justify-content-center align-items-center">
+          <div className="d-flex flex-column d-lg-flex justify-content-center align-items-center">
             <div
               className="d-flex flex-column mb-5 justify-content-between align-items-center"
               style={{ height: "200px" }}
