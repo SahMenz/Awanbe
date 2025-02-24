@@ -1,0 +1,8 @@
+.container-adjustment{
+    padding: 26px 100px;
+}
+@media (maxs-width: 768px){
+    .container-adjustment{
+        padding: 15px 50px;
+    }
+}
