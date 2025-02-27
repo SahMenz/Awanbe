@@ -15,13 +15,9 @@ function AboutUs() {
       <div className="mt-5 d-flex flex-column align-items-center justify-content-center gap-4 flex-lg-row justify-content-lg-between">
         <div
           className="bg-a0 w-25"
-          style={{ minWidth: "250px", borderRadius: "15px", padding: "25px" }}
+          style={{ minWidth:"250px",borderRadius: "15px", padding: "25px" }}
         >
-          <img
-            src={ourMission}
-            alt=""
-            style={{ borderRadius: "30px", backgroundColor: "#fff" }}
-          />
+          <img src={ourMission} alt="" style={{ borderRadius: "30px", backgroundColor:"#fff" }} />
           <div className="bg-a0 txt-ff fw-500 fs-23">Our Mission</div>
           <div style={{ height: "100px", backgroundColor: "#A04D07" }}></div>
           <div className="fs-16 fw-400 txt-ff bg-a0">
@@ -31,13 +27,10 @@ function AboutUs() {
           </div>
         </div>
 
-        <div
-          className="w-25"
-          style={{ minWidth: "250px", borderRadius: "15px", padding: "25px" }}
-        >
+        <div className="w-25" style={{minWidth:"250px", borderRadius: "15px", padding: "25px" }}>
           <img src={ourVision} alt="" />
           <div className="txt-a0 fw-500 fs-23">Our Vision</div>
-          <div style={{ height: "100px" }}></div>
+          <div style={{ height: "100px"}}></div>
           <div className="fs-16 fw-400 txt-00">
             To be the leading platform for African-themed events, seamlessly
             blending tradition with technology to create meaningful and
@@ -45,13 +38,10 @@ function AboutUs() {
           </div>
         </div>
 
-        <div
-          className="w-25"
-          style={{ minWidth: "250px", borderRadius: "15px", padding: "25px" }}
-        >
+        <div className="w-25" style={{minWidth:"250px", borderRadius: "15px", padding: "25px" }}>
           <img src={ourValues} alt="" />
           <div className="txt-a0 fw-500 fs-23">Our Values</div>
-          <div style={{ height: "100px" }}></div>
+          <div style={{ height: "100px"}}></div>
           <div className="fs-16 fw-400 txt-00">
             We innovate to meet user needs, preserve African heritage, build a
             strong community, and deliver excellence through a seamless
@@ -59,8 +49,8 @@ function AboutUs() {
           </div>
         </div>
       </div>
-      <div className="txt-73 fs-83 fw-500 mt-5 w-75">
-        Where <span className="txt-a0">Cultural Roots</span> Meet Modern Expression
+      <div>
+          Where <span>Cultural Roots</span> Meet Modern Expression
       </div>
     </div>
   );

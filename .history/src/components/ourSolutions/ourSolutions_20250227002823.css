@@ -1,0 +1,31 @@
+.creatingAccess{
+    background-image: url("../../assets/images/getNotified.png");
+    background-position: start;
+    background-repeat: no-repeat;
+    /*background-size: auto;
+    */background-size: contain;
+    padding: 20px 20px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+
+}
+.general{
+    padding: 20px 20px;
+}
+.sizing65{
+    font-size: 7.5vw;
+}
+@media (min-width:776px) {
+    .creatingAccess{
+        padding: 20px 100px;
+    }
+    .sizing65{
+        font-size: 65px;
+    }
+    .general{
+        padding: 20px 100px;
+    }
+}

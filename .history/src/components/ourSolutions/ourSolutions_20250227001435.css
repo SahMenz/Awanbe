@@ -1,0 +1,25 @@
+.creatingAccess{
+    /* background-image: url("../../../assets/images/creatingEclipse.png"); */
+    background-position: start;
+    background-repeat: no-repeat;
+    /* background-size: auto; */
+    background-size: contain;
+    padding: 20px 20px;
+}
+.general{
+    padding: 20px 20px;
+}
+.sizing65{
+    font-size: 7.5vw;
+}
+@media (min-width:776px) {
+    .creatingAccess{
+        padding: 20px 100px;
+    }
+    .sizing65{
+        font-size: 65px;
+    }
+    .general{
+        padding: 20px 100px;
+    }
+}

@@ -59,7 +59,7 @@ function AboutUs() {
           </div>
         </div>
       </div>
-      <div className="txt-73 fs-83 fw-500 mt-5 w-75">
+      <div className="txt-73 fs-83 fw-500">
         Where <span className="txt-a0">Cultural Roots</span> Meet Modern Expression
       </div>
     </div>
