@@ -1,9 +1,10 @@
 import "./navigation.css";
-import { Link, NavLink } from "react-router-dom";
+// import { Link, NavLink } from "react-router-dom";
 import landingPageLogo from "../../assets/images/landingPageLogo.svg";
 import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-// import { HashLink as NavLink } from "react-router-hash-link";
+// import { HashLink }
+import { HashLink as Link } from "react-router-hash-link";
 
 function Navigation() {
   const [show, setShow] = useState(false);
@@ -15,7 +16,7 @@ function Navigation() {
     <div className="d-flex container-adjustment justify-content-between align-items-center">
       <img src={landingPageLogo} />
       <div className="d-flex align-items-center w-50 justify-content-between d-lg-flex d-none">
-        <NavLink
+        <Link
           to="/"
           style={({ isActive }) => ({
             color: isActive ? "#A04D07" : "#737373",
@@ -23,8 +24,8 @@ function Navigation() {
           className="text-decoration-none txt-73 fw-600 fs-16"
         >
           Home
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
         // to="/about-us"
           style={({ isActive }) => ({
             color: isActive ? "#A04D07" : "#737373",
@@ -32,23 +33,23 @@ function Navigation() {
           className="text-decoration-none txt-73 fw-600 fs-16"
         >
           About us
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           style={({ isActive }) => ({
             color: isActive ? "#A04D07" : "#737373",
-          })}
+          })} to="#solution"
           className="text-decoration-none txt-73 fw-600 fs-16"
         >
           Our solution
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           style={({ isActive }) => ({
             color: isActive ? "#A04D07" : "#737373",
           })}
           className="text-decoration-none txt-73 fw-600 fs-16"
         >
           How it works
-        </NavLink>
+        </Link>
       </div>
       <div className="d-lg-flex d-none">
         <Link to="/login">
@@ -110,7 +111,7 @@ function Navigation() {
               className="d-flex flex-column mb-5 justify-content-between align-items-center"
               style={{ height: "200px" }}
             >
-              <NavLink
+              <Link
                 to="/"
                 style={({ isActive }) => ({
                   color: isActive ? "#A04D07" : "#737373",
@@ -119,8 +120,8 @@ function Navigation() {
                 end
               >
                 Home
-              </NavLink>
-              <NavLink
+              </Link>
+              <Link
                 style={({ isActive }) => ({
                   color: isActive ? "#A04D07" : "#737373",
                 })}
@@ -128,8 +129,8 @@ function Navigation() {
                 end
               >
                 About us
-              </NavLink>
-              <NavLink
+              </Link>
+              <Link
                 style={({ isActive }) => ({
                   color: isActive ? "#A04D07" : "#737373",
                 })}
@@ -137,8 +138,8 @@ function Navigation() {
                 end
               >
                 Our solution
-              </NavLink>
-              <NavLink
+              </Link>
+              <Link
                 style={({ isActive }) => ({
                   color: isActive ? "#A04D07" : "#737373",
                 })}
@@ -146,7 +147,7 @@ function Navigation() {
                 end
               >
                 How it works
-              </NavLink>
+              </Link>
             </div>
           </div>
         </Offcanvas.Body>

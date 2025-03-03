@@ -1,4 +1,5 @@
 import "./ourSolutions.css";
+import telegram from "../../assets/images/telegram.svg";
 
 function OurSolutions() {
   return (
@@ -158,6 +159,9 @@ function OurSolutions() {
             >
               Get Notified
             </button>
+            {/* <div className="d-block d-xl-none">
+              <img src={telegram} className='cursor' style={{width:"37px"}}/>
+            </div> */}
           </div>
           <button
             className="bg-a0 txt-ff d-xl-none fw-400 fs-19"

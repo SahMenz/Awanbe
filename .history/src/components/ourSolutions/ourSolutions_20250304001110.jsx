@@ -1,4 +1,5 @@
 import "./ourSolutions.css";
+import telegram from "../../assets/images/telegram.svg";
 
 function OurSolutions() {
   return (
@@ -135,18 +136,18 @@ function OurSolutions() {
             Subscribe for Exclusive Updates and Notifications.
           </div>
           <div
-            className="w-75 gap-3 m-5 d-flex align-items-center justify-content-center justify-content-xl-between bg-ff mt-lg-5 mt-4"
+            className="w-75 gap-3 m-5 d-flex justify-content-between bg-ff mt-lg-5 mt-4"
             style={{
               minWidth: "240px",
               borderRadius: "30px",
-              padding: "10px",
+              padding: "9px 9px 9px 30px",
             }}
           >
             <input
               type="email"
-              className="col-7"
+              className=""
               placeholder="Your email address"
-              style={{ maxWidth: "455px" }}
+              style={{ width: "47vw", maxWidth: "455px" }}
             />
             <button
               className="w-50 bg-a0 txt-ff d-none d-xl-block fw-400 fs-19"
@@ -158,13 +159,16 @@ function OurSolutions() {
             >
               Get Notified
             </button>
+            {/* <div className="d-block d-xl-none">
+              <img src={telegram} className='cursor' style={{width:"37px"}}/>
+            </div> */}
           </div>
           <button
             className="bg-a0 txt-ff d-xl-none fw-400 fs-19"
             style={{
-              backgroundColor: "#A04D07",
+              backgroundColor: "#f5f5f5",
               padding: "12px 20px",
-              borderRadius: "20px",border:"1px solid #EBE9E0"
+              borderRadius: "20px",
             }}
           >
             Get Notified

@@ -9,7 +9,7 @@ function Hero() {
         <img src={logoInHero} className="bg-f5" />
         <div
           className="fs-63 fw-600 my-3 bg-f5"
-          style={{ minWidth: "300px", width: "75vw" }}
+          style={{ minWidth: "350px", width: "75vw" }}
         >
           New Bespoke African-Themed Solution For Party Planning
         </div>

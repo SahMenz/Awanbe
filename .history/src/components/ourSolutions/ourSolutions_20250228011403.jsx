@@ -1,4 +1,4 @@
-import "./ourSolutions.css";
+import './ourSolutions.css'
 
 function OurSolutions() {
   return (
@@ -135,40 +135,25 @@ function OurSolutions() {
             Subscribe for Exclusive Updates and Notifications.
           </div>
           <div
-            className="w-75 gap-3 m-5 d-flex align-items-center justify-content-center justify-content-xl-between bg-ff mt-lg-5 mt-4"
-            style={{
-              minWidth: "240px",
-              borderRadius: "30px",
-              padding: "10px",
-            }}
+            className="w-75 gap-3 d-flex justify-content-between bg-ff mt-lg-5 mt-4"
+            style={{ minWidth:"330px",borderRadius: "30px", padding: "9px 9px 9px 30px" }}
           >
             <input
               type="email"
-              className="col-7"
+              className='ps-3'
               placeholder="Your email address"
-              style={{ maxWidth: "455px" }}
+              style={{ width: "30vw", maxWidth: "455px" }}
             />
             <button
-              className="w-50 bg-a0 txt-ff d-none d-xl-block fw-400 fs-19"
-              style={{
-                backgroundColor: "#A04D07",
-                padding: "12px 20px",
-                borderRadius: "20px",
-              }}
+              className="w-50 bg-a0 txt-ff d-none d-md-block fw-400 fs-19"
+              style={{backgroundColor:"#A04D07" ,padding: "12px 20px", borderRadius: "20px" }}
             >
               Get Notified
             </button>
+            <div className="d-block d-md-none">
+              {/* <CustomSvg name="enter" /> */}
+            </div>
           </div>
-          <button
-            className="bg-a0 txt-ff d-xl-none fw-400 fs-19"
-            style={{
-              backgroundColor: "#A04D07",
-              padding: "12px 20px",
-              borderRadius: "20px",border:"1px solid #EBE9E0"
-            }}
-          >
-            Get Notified
-          </button>
         </div>
       </div>
     </div>

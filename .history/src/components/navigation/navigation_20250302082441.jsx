@@ -38,6 +38,7 @@ function Navigation() {
             color: isActive ? "#A04D07" : "#737373",
           })}
           className="text-decoration-none txt-73 fw-600 fs-16"
+          to="/solution"
         >
           Our solution
         </NavLink>

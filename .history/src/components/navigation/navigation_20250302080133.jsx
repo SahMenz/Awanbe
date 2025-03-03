@@ -1,9 +1,10 @@
 import "./navigation.css";
-import { Link, NavLink } from "react-router-dom";
+// import { Link, NavLink } from "react-router-dom";
 import landingPageLogo from "../../assets/images/landingPageLogo.svg";
 import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-// import { HashLink as NavLink } from "react-router-hash-link";
+// import { HashLink }
+import { HashLink as NavLink } from "react-router-hash-link";
 
 function Navigation() {
   const [show, setShow] = useState(false);
@@ -36,7 +37,7 @@ function Navigation() {
         <NavLink
           style={({ isActive }) => ({
             color: isActive ? "#A04D07" : "#737373",
-          })}
+          })} to="#solution"
           className="text-decoration-none txt-73 fw-600 fs-16"
         >
           Our solution

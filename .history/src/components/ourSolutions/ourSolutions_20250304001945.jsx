@@ -1,4 +1,5 @@
 import "./ourSolutions.css";
+import telegram from "../../assets/images/telegram.svg";
 
 function OurSolutions() {
   return (

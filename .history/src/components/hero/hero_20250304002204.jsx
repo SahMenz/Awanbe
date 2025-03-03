@@ -5,11 +5,11 @@ import "./hero.css";
 function Hero() {
   return (
     <div className="d-flex flex-column pt-4 align-items-center bg-f5">
-      <div className="bg-f5 container-adjustment d-flex col-12 align-items-center flex-column text-center">
+      <div className="bg- container-adjustment d-flex col-12 align-items-center flex-column text-center">
         <img src={logoInHero} className="bg-f5" />
         <div
           className="fs-63 fw-600 my-3 bg-f5"
-          style={{ minWidth: "300px", width: "75vw" }}
+          style={{ minWidth: "350px", width: "75vw" }}
         >
           New Bespoke African-Themed Solution For Party Planning
         </div>
