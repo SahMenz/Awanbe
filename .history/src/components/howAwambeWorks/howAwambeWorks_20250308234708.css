@@ -1,0 +1,11 @@
+.heightAdjustment{
+    height: 70vh;
+}
+.container-adjustment-special-case{
+    padding: 26px 50px;
+}
+@media (max-width: 1024px){
+    .container-adjustment-special-case{
+        padding: 10px 10px;
+    }
+}
