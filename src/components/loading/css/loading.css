@@ -1,0 +1,44 @@
+/* Custom Loading 1  */
+/* HTML: <div class="loader"></div> */
+.custom-loader-2 {
+  position: fixed;
+  z-index: 9000;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;  
+}
+
+.custom-loader-2:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+    background: radial-gradient(rgba(20, 20, 20, 0.6), rgba(0, 0, 0, 0.6));
+
+  background: -webkit-radial-gradient(rgba(20, 20, 20, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+
+.custom-loader-1, .custom-loader-2 {
+    width: 55px;
+    aspect-ratio: 1;
+    --g1:conic-gradient(from  90deg at 3px  3px ,#0000 90deg,#EB1C25 0);
+    --g2:conic-gradient(from -90deg at 22px 22px,#0000 90deg,#EB1C25 0);
+    background:var(--g1),var(--g1),var(--g1), var(--g2),var(--g2),var(--g2);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    animation: l7 1.5s infinite;
+  }
+  @keyframes l7 {
+    0%   {background-position:0    0   ,0 100%,100% 100% }
+    25%  {background-position:100% 0   ,0 100%,100% 100% }
+    50%  {background-position:100% 0   ,0 0   ,100% 100% }
+    75%  {background-position:100% 0   ,0 0   ,0    100% }
+    100% {background-position:100% 100%,0 0   ,0    100% }
+  }

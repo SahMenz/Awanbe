@@ -1,0 +1,145 @@
+*, *::before, *::after{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Outfit", serif;
+  /* color: #000; */
+}
+
+      
+        /* BACKGROUND COLOR*/
+.bg-ff{
+  background-color: #fff;
+}
+.bg-00{
+  background-color: #000;
+}
+.bg-a0{
+  background-color: #A04D07;
+}
+.bg-f3{
+  background-color: #f3f3f3;
+}
+.bg-d3{
+  background-color: #d3d3d3;
+}
+.bg-trans{
+  background-color: transparent;
+}
+.bg-f5{
+  background-color: #F5F5F5;
+}
+.bg-eb{
+  background-color: #EBE9E0;
+}
+
+
+
+
+        
+        /* TEXT COLOR */
+.txt-ff{
+  color: #fff;
+}
+.txt-00{
+  color: #000;
+}
+.txt-73{
+  color: #737373;
+}
+.txt-a0{
+  color: #A04D07;
+}
+.txt-c9{
+  color: #c91414;
+}
+.txt-f5f{
+  color: #f5ffff;
+}
+.txt-7a{
+  color: #7a7a7a;
+}
+.txt-eb{
+  color: #EBE9E0;
+}
+
+
+      /* FONT SIZE */
+.fs-43{
+  font-size: 43px;
+}
+.fs-17{
+  font-size: 17px;
+}
+.fs-16{
+  font-size: 16px;
+}
+.fs-23{
+  font-size: 23px;
+}
+.fs-19{
+  font-size: 19px;
+}
+.fs-13{
+  font-size: 13px;
+}
+.fs-63{
+  font-size: 63px;
+}
+.fs-83{
+  font-size: 83px;
+}
+.fs-11{
+  font-size: 11px;
+}
+@media (max-width:1024px){
+  .fs-83{
+    font-size: 40px;
+  }
+  .fs-63{
+    font-size: 30px;
+  }
+  .fs-19{
+    font-size: 15px;
+  }
+  .fs-16{
+    font-size: 12px;
+  }
+  .fs-43{
+    font-size: 25px;
+  }
+  .fs-11{
+    font-size: 9px;
+  }
+}
+
+
+      /* FONT WEIGHT */
+.fw-300{
+  font-weight: 300;
+}
+.fw-400{
+  font-weight: 400;
+}
+.fw-500{
+  font-weight: 500;
+}
+.fw-600{
+  font-weight: 600;
+}
+.fw-700{
+  font-weight: 700;
+}
+.fw-800{
+  font-weight: 800;
+}
+.fw-900{
+  font-weight: 900;
+}
+
+
+      /* EXTRA */
+
+  .cursor{
+    cursor: pointer;
+  }
