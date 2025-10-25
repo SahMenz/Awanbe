@@ -1,0 +1,12 @@
+.items {
+  borderradius: 15px;
+  backgroundcolor: transparent;
+  color: #a04d07;
+  border: 1px solid #a04d07;
+  padding: 10px 24px;
+}
+
+.items:hover {
+  background-color: #a04d07;
+  color: white;
+}

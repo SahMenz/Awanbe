@@ -1,0 +1,181 @@
+import { CgProfile } from "react-icons/cg";
+import { useState, useRef } from "react"; // Import useRef for file input
+import "./settings.css";
+
+function Settings() {
+  // State to hold the URL of the selected profile image
+  const [profileImage, setProfileImage] = useState(null);
+  // Ref for the hidden file input
+  const fileInputRef = useRef(null);
+
+  // Function to handle file selection
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // Create a URL for the selected file and update the state
+      const imageUrl = URL.createObjectURL(file);
+      setProfileImage(imageUrl);
+    }
+  };
+
+  // Function to trigger click on hidden file input
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  return (
+    <div className="ms-sm-5 ms-0 txt-a0 w-100">
+      <div className="fs-23 fw-500 mb-4">Personal Details </div>
+      <div
+        className="mb-5 d-flex justify-content-between flex-wrap align-items-center gap-4"
+        style={{ border: "0.2px solid #737373", borderRadius: "24px", padding: "8px 16px" }}
+      >
+        <div className="d-flex align-items-center">
+          <div style={{ maxWidth: "65px", maxHeight: "65px", overflow: "hidden", borderRadius: "50%" }}>
+            {/* Conditional rendering for the profile image */}
+            {profileImage ? (
+              <img
+                src={profileImage}
+                alt="Profile"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            ) : (
+              // Default icon if no image is selected
+              <CgProfile size={65} />
+            )}
+          </div>
+          <div className="ms-2">
+            <div className="fs-19 fw-500 txt-a0">Anne Godiva</div>
+            <div className="fs-16 fw-400 txt-73">annegodiva@gmail.com</div>
+          </div>
+        </div>
+
+        {/* 1. Hidden File Input */}
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept="image/*"
+          style={{ display: 'none' }} // Hide the default file input
+        />
+
+        {/* 2. Custom Styled Button to Trigger File Input */}
+        <button
+          onClick={handleButtonClick}
+          className="cursor"
+          style={{
+            background: '#A04D07', // Set background color
+            color: '#FFFFFF', // Set text color
+            border: 'none',
+            borderRadius: '18px', // Slightly smaller radius for the button
+            padding: '10px 20px',
+            fontSize: '16px',
+            fontWeight: '500',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+          }}
+          // You could add a hover effect here if using a CSS file or styled-components
+        >
+          Change Photo
+        </button>
+      </div>
+      <div className="mb-4">
+        <p className="fs-19 fw-500 mb-3">First Name</p>
+        <input
+          type="text"
+          className="bg-trans col-12"
+          placeholder="Change your first name"
+          style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }}
+        />
+      </div>
+      <div className="mb-4">
+        <p className="fs-19 fw-500 mb-3">Last Name</p>
+        <input
+          type="text"
+          className="bg-trans col-12"
+          placeholder="Change your Last name"
+          style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }}
+        />
+      </div>
+      <div className="mb-5">
+        <p className="fs-19 fw-500 mb-3">Username</p>
+        <input
+          type="text"
+          className="bg-trans col-12"
+          placeholder="Change your Username"
+          style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }}
+        />
+      </div>
+
+      <div className="fs-23 fw-500 mb-4">Password and Security</div>
+      <div className="mb-4">
+        <p className="fs-19 fw-500 mb-3">Edit your email address</p>
+        <input
+          type="email"
+          className="bg-trans col-12"
+          placeholder="favourmicheal47@gmail.com"
+          style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }}
+        />
+      </div>
+      <div className="mb-4">
+        <p className="fs-19 fw-500 mb-3">Password</p>
+        <input
+          type="password"
+          className="bg-trans col-12"
+          placeholder="*****"
+          style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default Settings;
+
+
+// import { CgProfile } from "react-icons/cg"
+// import "./settings.css"
+
+// function Settings() {
+//   return (
+//     <div className="ms-4 txt-a0 w-100">
+//       <div className="fs-23 fw-500 mb-4">Personal Details </div>
+//       <div className="mb-5 d-flex justify-content-between align-items-center gap-3" style={{border:"0.2px solid #737373", borderRadius:"24px", padding:"8px 16px"}}>
+//         <div className="d-flex align-items-center">
+//           <div style={{maxWidth:"65px", maxHeight:"65px"}}>
+//             <CgProfile  size={65}/>
+//           </div>
+//           <div className="ms-2">
+//             <div className="fs-19 fw-500 txt-a0">Anne Godiva</div>
+//             <div className="fs-16 fw-400 txt-73">annegodiva@gmail.com</div>
+//           </div>
+//         </div>
+//         <input type="file" className="cursor"/>
+//       </div>
+//       <div className="mb-4">
+//         <p className="fs-19 fw-500 mb-3">First Name</p>
+//         <input type="text" className="bg-trans col-12" placeholder="Anne" style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }} />
+//       </div>
+//       <div className="mb-4">
+//         <p className="fs-19 fw-500 mb-3">Last Name</p>
+//         <input type="text" className="bg-trans col-12" placeholder="Godiva" style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }} />
+//       </div>
+//       <div className="mb-5">
+//         <p className="fs-19 fw-500 mb-3">Username</p>
+//         <input type="text" className="bg-trans col-12" placeholder="SahMenz" style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }} />
+//       </div>
+
+//       <div className="fs-23 fw-500 mb-4">Password and Security</div>
+//       <div className="mb-4">
+//         <p className="fs-19 fw-500 mb-3">Email Address</p>
+//         <input type="email" className="bg-trans col-12" placeholder="favourmicheal47@gmail.com" style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }} />
+//       </div>
+//       <div className="mb-4">
+//         <p className="fs-19 fw-500 mb-3">Password</p>
+//         <input type="password" className="bg-trans col-12" placeholder="*****" style={{ borderRadius: "24px", padding: "8px 16px", border: "0.1px solid #737373" }} />
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Settings

@@ -1,0 +1,49 @@
+/* * 1. Hide the original input field but keep it functional 
+ * and accessible (opacity: 0 is better than display: none).
+ */
+.hidden-input {
+  /* Position it absolutely to cover the label area */
+  position: absolute; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Make it invisible */
+  opacity: 0; 
+  
+  /* Ensure the cursor changes when hovering over the label/button area */
+  cursor: pointer;
+  z-index: 10; /* Make sure it's on top to capture the click */
+}
+
+/* * 2. Style the container/label for the custom button
+ */
+.custom-file-upload label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative; /* Needed for the absolute positioning of the hidden input */
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* * 3. Style the visible "button" part 
+ */
+.upload-button {
+  font-weight: bold;
+  color: white;
+  background-color: #A04D07; /* Your desired accent color */
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+/* Hover effect */
+.custom-file-upload label:hover {
+  background-color: #e9e9e9;
+}
