@@ -11,9 +11,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"; // Import Redux hooks
 import { setActiveNav } from "../../../redux/slices/dashboardSlice"; // Import action
-// Assuming you have an authSlice with a logoutUser action
-// import { logoutUser } from "../../../redux/slices/authSlice"; 
 import { Modal } from "react-bootstrap";
+import { IoClose } from "react-icons/io5";
 
 const navLinks = [
   {
@@ -48,7 +47,6 @@ const navLinks = [
   },
 ];
 
-// MODIFIED: Added handleLogout prop
 function MyVerticallyCenteredModal(props) {
   const options = [
     { label: "Country", value: "Country" },
@@ -88,9 +86,17 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header
         style={{ border: "none" }}
-        className="bg-02"
+        className="bg-02  d-flex justify-content-between"
       >
         <Modal.Title id="" className="txt-a0 fw-500 fs-19">ARE YOU SURE YOU WANT TO LOGOUT</Modal.Title>
+        <button
+          type="button"
+          style={{ borderRadius: "20px", padding: "3px" }}
+          className="bg-a0"
+
+        >
+          <IoClose size={30} color="white" />
+        </button>
       </Modal.Header>
       <Modal.Body className="bg-f7 txt-a0">
         <div className="d-flex flex-column flex-md-row gap-3  fs-16 fw-400 justify-content-between w-100">
@@ -100,16 +106,12 @@ function MyVerticallyCenteredModal(props) {
               borderRadius: "15px",
               backgroundColor: "Transparent",
             }}
-            className="col-12 col-md-4 txt-a0 p-2"
+            className="col-12 col-md-5 txt-a0 p-2"
           >
             Cancel
           </button>
-          <button 
-            // MODIFIED: Call the handleLogout function passed via props
-            onClick={props.handleLogout}
-            style={{border: "1px solid #A04D07",
-              borderRadius: "15px",
-              backgroundColor: "Transparent", color:"red" }}
+          <button
+            style={{ border: "none", borderRadius: "15px" }}
             className="col-12 col-md-4 bg-eb p-2"
           >
             Log out
@@ -127,13 +129,11 @@ const settingsLink = {
   src: settings,
 };
 const activeIconFilter =
-  "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)";
+  "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)"; // Calculated to approximate #A04D07
 
-// MODIFIED: Accept onCloseMobileMenu prop
-function DashboardPanel({ onCloseMobileMenu }) {
+// Removed props: onNavChange, activeNav
+function DashboardPanel() {
   const navigate = useNavigate();
-  // The root path is usually "/"
-  const INITIAL_PAGE_PATH = "/"; 
   const navigateTo = (path, stateData) => navigate(path, { state: stateData });
   const [modalShow, setModalShow] = useState(false);
 
@@ -143,28 +143,10 @@ function DashboardPanel({ onCloseMobileMenu }) {
   // Get dispatch function
   const dispatch = useDispatch();
 
-  // NEW HANDLER: For logging out
-  const handleLogout = () => {
-    // 1. Close the modal
-    setModalShow(false);
-    
-    // 2. Clear Redux state (e.g., user session)
-    // You would typically dispatch an action here to clear user authentication state
-    // dispatch(logoutUser()); 
-
-    // 3. Navigate to the initial page (e.g., home or login page)
-    navigate(INITIAL_PAGE_PATH);
-  };
-
   const handleNavClick = (title, path) => {
     path && navigateTo(path);
     // Dispatch action to update Redux state
     dispatch(setActiveNav(title));
-    
-    // NEW: Close the mobile menu if the function is provided (i.e., we are in the Offcanvas)
-    if (onCloseMobileMenu) {
-      onCloseMobileMenu();
-    }
   };
 
   useEffect(() => {
@@ -290,14 +272,14 @@ function DashboardPanel({ onCloseMobileMenu }) {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        // MODIFIED: Pass the new handleLogout function
-        handleLogout={handleLogout}
       />
     </div>
   );
 }
 
 export default DashboardPanel;
+
+
 
 
 

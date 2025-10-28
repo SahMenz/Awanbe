@@ -17,7 +17,9 @@ function Dashboard() {
   const activeNav = useSelector((state) => state.dashboard.activeNav);
 
   const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false); // This is the function we need to pass
+  const handleClose = () => setShow(false);
+
+  // handleNavChange is no longer needed here as the change happens in DashboardPanel
 
   return (
     <div
@@ -73,8 +75,8 @@ function Dashboard() {
         <Offcanvas.Header closeButton></Offcanvas.Header>
         <Offcanvas.Body>
           <div>
-            {/* NEW: Pass handleClose as onCloseMobileMenu to close the canvas on nav click */}
-            <DashboardPanel onCloseMobileMenu={handleClose} /> 
+            {/* activeNav is read from Redux inside DashboardPanel, no need for prop */}
+            <DashboardPanel /> 
           </div>
         </Offcanvas.Body>
       </Offcanvas>
@@ -83,7 +85,6 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
 
 
 

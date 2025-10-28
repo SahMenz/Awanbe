@@ -2,7 +2,7 @@ import { CgProfile } from "react-icons/cg";
 import { useState, useRef, useEffect } from "react"; // Added useEffect
 import "./settings.css";
 import { useSelector, useDispatch } from "react-redux"; // Import Redux Hooks
-import { setUsername, setProfileImage } from "../../../../redux/slices/userProfileSlice";
+import { setUsername, setProfileImage } from "../../redux/slices/userProfileSlice";
 import { setUser } from "../../../../redux/slices/authSlice"; // Import setUser to update name/email in auth slice
 
 function Settings() {
@@ -130,12 +130,7 @@ function Settings() {
           style={{ border: "0.2px solid #737373", borderRadius: "24px", padding: "8px 16px" }}
         >
           <div className="d-flex align-items-center">
-            <div style={{width: "60px", 
-              height: "60px", 
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center" ,borderRadius: "50%" }}>
+            <div style={{ maxWidth: "65px", maxHeight: "65px", overflow: "hidden", borderRadius: "50%" }}>
               {/* Display profile image from Redux state */}
               {profileImage ? (
                 <img

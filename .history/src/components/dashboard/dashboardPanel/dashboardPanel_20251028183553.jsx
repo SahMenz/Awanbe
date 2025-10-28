@@ -11,9 +11,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"; // Import Redux hooks
 import { setActiveNav } from "../../../redux/slices/dashboardSlice"; // Import action
-// Assuming you have an authSlice with a logoutUser action
-// import { logoutUser } from "../../../redux/slices/authSlice"; 
 import { Modal } from "react-bootstrap";
+import { IoClose } from "react-icons/io5";
 
 const navLinks = [
   {
@@ -48,7 +47,6 @@ const navLinks = [
   },
 ];
 
-// MODIFIED: Added handleLogout prop
 function MyVerticallyCenteredModal(props) {
   const options = [
     { label: "Country", value: "Country" },
@@ -80,7 +78,7 @@ function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
-      size="md"
+      size="xl"
       aria-labelledby="contained-modal-title-vcenter"
       centered
       backdrop="static"
@@ -88,32 +86,264 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header
         style={{ border: "none" }}
-        className="bg-02"
+        className="bg-02 txt-00 d-flex justify-content-between"
       >
-        <Modal.Title id="" className="txt-a0 fw-500 fs-19">ARE YOU SURE YOU WANT TO LOGOUT</Modal.Title>
+        <Modal.Title id="">Filter</Modal.Title>
+        <button
+          type="button"
+          style={{ borderRadius: "20px", padding: "3px" }}
+          className="bg-a0" // Your custom CSS class
+          onClick={props.onHide} // Calls the close function
+          aria-label="Close"
+        >
+          <IoClose size={30} color="white" /> {/* Custom icon/style */}
+        </button>
       </Modal.Header>
       <Modal.Body className="bg-f7 txt-a0">
-        <div className="d-flex flex-column flex-md-row gap-3  fs-16 fw-400 justify-content-between w-100">
-          <button onClick={props.onHide} aria-label="Close"
-            style={{
-              border: "1px solid #A04D07",
-              borderRadius: "15px",
-              backgroundColor: "Transparent",
-            }}
-            className="col-12 col-md-4 txt-a0 p-2"
-          >
-            Cancel
-          </button>
-          <button 
-            // MODIFIED: Call the handleLogout function passed via props
-            onClick={props.handleLogout}
-            style={{border: "1px solid #A04D07",
-              borderRadius: "15px",
-              backgroundColor: "Transparent", color:"red" }}
-            className="col-12 col-md-4 bg-eb p-2"
-          >
-            Log out
-          </button>
+        <div className="mt-4">
+          <p className="txt-00 fs-23 fw-400">Event Type</p>
+          <div className="gap-3 fs-16 fw-400 d-flex align-items-center flex-wrap justify-content-center justify-content-md-start">
+            <button className="items"
+            >
+              Wedding
+            </button>
+            <button
+              className="items"
+            >
+              Political Events
+            </button>
+            <button
+              className="items"
+            >
+              Anniversaries
+            </button>
+            <button
+              className="items"
+            >
+              Beach Events
+            </button>
+            <button
+              className="items"
+            >
+              Church Events
+            </button>
+            <button
+              className="items"
+            >
+              Birthday Parties
+            </button>
+            <button
+              className="items"
+            >
+              Special Club Events
+            </button>
+            <button
+             className="items"
+            >
+              School Events
+            </button>
+            <button
+              className="items"
+            >
+              Others
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <p className="txt-00 fs-23 fw-400">Venue Type</p>
+          <div className="gap-3 fs-16 fw-400 gap-3 d-flex align-items-center flex-wrap justify-content-center justify-content-md-start">
+            <button
+              className="items"
+            >
+              Conference Centers
+            </button>
+            <button
+              className="items"
+            >
+              Hotels & Resorts
+            </button>
+            <button
+              className="items"
+            >
+              Coworking Spaces
+            </button>
+            <button
+              className="items"
+            >
+              Auditoriums & Theaters
+            </button>
+            <button
+              className="items"
+            >
+              Banquet Halls
+            </button>
+            <button
+              className="items"
+            >
+              Ballrooms
+            </button>
+            <button
+              className="items"
+            >
+              Lounge
+            </button>
+            <button
+              className="items"
+            >
+              Gardens & Parks
+            </button>
+            <button
+              className="items"
+            >
+              Beaches & Waterfront
+            </button>
+            <button
+              className="items"
+            >
+              Museums & Art Galleries
+            </button>
+            <button
+              className="items"
+            >
+              Convention Centers
+            </button>
+            <button
+              className="items"
+            >
+              Others
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <p className="txt-00 fs-23 fw-400">Venue Capacity</p>
+          <div className="gap-3 fs-16 fw-400 gap-3 d-flex align-items-center flex-wrap justify-content-center justify-content-md-start">
+            <button
+              className="items"
+            >
+              Up to 50
+            </button>
+            <button
+              className="items"
+            >
+              50 - 100
+            </button>
+            <button
+              className="items"
+            >
+              100 - 300
+            </button>
+            <button
+              className="items"
+            >
+              300 - 500
+            </button>
+            <button
+              className="items"
+            >
+              500 - 700
+            </button>
+            <button
+              className="items"
+            >
+              700 - 1000
+            </button>
+            <button
+              className="items"
+            >
+              1000 and Above
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <p className="txt-00 fs-23 fw-400">Location</p>
+          <div className="gap-3 fs-16 fw-400 gap-3 d-flex align-items-center flex-wrap justify-content-center justify-content-md-start">
+            <select
+              id="country-select"
+              className="txt-a0"
+              style={{
+                borderRadius: "15px",
+                backgroundColor: "transparent",
+                color: "#A04D07",
+                border: "1px solid #A04D07",
+                padding: "10px 24px",
+                cursor: "pointer",
+                // appearance: "none",
+              }}
+              value={selectedValue}
+              onChange={handleChange}
+            >
+              {" "}
+              {options.map((option) => (
+                <option
+                  className="txt-a0"
+                  style={{ cursor: "pointer", border: "1px solid #a04d07" }}
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </option>
+              ))}
+            </select>
+
+            <select
+              id="state-select"
+              className="txt-a0"
+              style={{
+                borderRadius: "15px",
+                backgroundColor: "transparent",
+                color: "#A04D07",
+                border: "1px solid #A04D07",
+                padding: "10px 24px",
+                cursor: "pointer",
+                // appearance: "none",
+              }}
+              value={selectedValueState}
+              onChange={handleChangedState}
+            >
+              {" "}
+              {StateOptions.map((StateOptions) => (
+                <option
+                  className="txt-a0"
+                  style={{ cursor: "pointer", border: "1px solid #a04d07" }}
+                  key={StateOptions.value}
+                  value={StateOptions.value}
+                >
+                  {StateOptions.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <p className="txt-00 fs-23 fw-400">Budget Price Plan</p>
+          <div className="gap-3 fs-16 fw-400 gap-3 d-flex align-items-center flex-wrap justify-content-center justify-content-md-start">
+            <input
+              type="number"
+              placeholder="$ Minimum price"
+              style={{
+                borderRadius: "15px",
+                backgroundColor: "transparent",
+                color: "#A04D07",
+                border: "1px solid #A04D07",
+                padding: "10px 24px",
+              }}
+            />
+            <input
+              type="number"
+              placeholder="$ Maximum price"
+              style={{
+                borderRadius: "15px",
+                backgroundColor: "transparent",
+                color: "#A04D07",
+                border: "1px solid #A04D07",
+                padding: "10px 24px",
+              }}
+            />
+          </div>
         </div>
       </Modal.Body>
     </Modal>
@@ -127,13 +357,11 @@ const settingsLink = {
   src: settings,
 };
 const activeIconFilter =
-  "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)";
+  "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)"; // Calculated to approximate #A04D07
 
-// MODIFIED: Accept onCloseMobileMenu prop
-function DashboardPanel({ onCloseMobileMenu }) {
+// Removed props: onNavChange, activeNav
+function DashboardPanel() {
   const navigate = useNavigate();
-  // The root path is usually "/"
-  const INITIAL_PAGE_PATH = "/"; 
   const navigateTo = (path, stateData) => navigate(path, { state: stateData });
   const [modalShow, setModalShow] = useState(false);
 
@@ -143,28 +371,10 @@ function DashboardPanel({ onCloseMobileMenu }) {
   // Get dispatch function
   const dispatch = useDispatch();
 
-  // NEW HANDLER: For logging out
-  const handleLogout = () => {
-    // 1. Close the modal
-    setModalShow(false);
-    
-    // 2. Clear Redux state (e.g., user session)
-    // You would typically dispatch an action here to clear user authentication state
-    // dispatch(logoutUser()); 
-
-    // 3. Navigate to the initial page (e.g., home or login page)
-    navigate(INITIAL_PAGE_PATH);
-  };
-
   const handleNavClick = (title, path) => {
     path && navigateTo(path);
     // Dispatch action to update Redux state
     dispatch(setActiveNav(title));
-    
-    // NEW: Close the mobile menu if the function is provided (i.e., we are in the Offcanvas)
-    if (onCloseMobileMenu) {
-      onCloseMobileMenu();
-    }
   };
 
   useEffect(() => {
@@ -282,7 +492,7 @@ function DashboardPanel({ onCloseMobileMenu }) {
               {settingsLink.title}
             </div>
           </div>
-          <div onClick={() => setModalShow(true)} className="d-flex align-items-center cursor p-3 ">
+          <div className="d-flex align-items-center cursor p-3 ">
             <img src={logout} alt="Logout" /> <div className="ms-2 txt-eb1">Logout</div>
           </div>
         </div>
@@ -290,14 +500,14 @@ function DashboardPanel({ onCloseMobileMenu }) {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        // MODIFIED: Pass the new handleLogout function
-        handleLogout={handleLogout}
       />
     </div>
   );
 }
 
 export default DashboardPanel;
+
+
 
 
 

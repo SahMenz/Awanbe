@@ -9,11 +9,6 @@ import vendors from "../../../assets/images/vendors.svg";
 import overview from "../../../assets/images/overview.svg";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"; // Import Redux hooks
-import { setActiveNav } from "../../../redux/slices/dashboardSlice"; // Import action
-// Assuming you have an authSlice with a logoutUser action
-// import { logoutUser } from "../../../redux/slices/authSlice"; 
-import { Modal } from "react-bootstrap";
 
 const navLinks = [
   {
@@ -48,130 +43,32 @@ const navLinks = [
   },
 ];
 
-// MODIFIED: Added handleLogout prop
-function MyVerticallyCenteredModal(props) {
-  const options = [
-    { label: "Country", value: "Country" },
-    { label: "Nigeria", value: "Nigeria" },
-    { label: "Niger", value: "Niger" },
-    { label: "China", value: "China" },
-  ];
-
-  const StateOptions = [
-    { label: "State", value: "State" },
-    { label: "Cross river", value: "Cross river" },
-    { label: "Lagos", value: "Lagos" },
-    { label: "Bauchi", value: "Bauchi" },
-  ];
-
-  const [selectedValue, setSelectedValue] = useState(options[0].value);
-  const [selectedValueState, setSelectedValueState] = useState(
-    options[0].value
-  );
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-
-  const handleChangedState = (event) => {
-    setSelectedValueState(event.target.value);
-  };
-
-  return (
-    <Modal
-      {...props}
-      size="md"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      backdrop="static"
-      contentClassName="shadow-lg"
-    >
-      <Modal.Header
-        style={{ border: "none" }}
-        className="bg-02"
-      >
-        <Modal.Title id="" className="txt-a0 fw-500 fs-19">ARE YOU SURE YOU WANT TO LOGOUT</Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="bg-f7 txt-a0">
-        <div className="d-flex flex-column flex-md-row gap-3  fs-16 fw-400 justify-content-between w-100">
-          <button onClick={props.onHide} aria-label="Close"
-            style={{
-              border: "1px solid #A04D07",
-              borderRadius: "15px",
-              backgroundColor: "Transparent",
-            }}
-            className="col-12 col-md-4 txt-a0 p-2"
-          >
-            Cancel
-          </button>
-          <button 
-            // MODIFIED: Call the handleLogout function passed via props
-            onClick={props.handleLogout}
-            style={{border: "1px solid #A04D07",
-              borderRadius: "15px",
-              backgroundColor: "Transparent", color:"red" }}
-            className="col-12 col-md-4 bg-eb p-2"
-          >
-            Log out
-          </button>
-        </div>
-      </Modal.Body>
-    </Modal>
-  );
-}
-
-
 const settingsLink = {
   title: "Settings",
   path: "/dashboard/settings",
   src: settings,
 };
 const activeIconFilter =
-  "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)";
+  "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)"; // Calculated to approximate #A04D07
 
-// MODIFIED: Accept onCloseMobileMenu prop
-function DashboardPanel({ onCloseMobileMenu }) {
+function DashboardPanel({ onNavChange, activeNav: propActiveNav }) {
   const navigate = useNavigate();
-  // The root path is usually "/"
-  const INITIAL_PAGE_PATH = "/"; 
   const navigateTo = (path, stateData) => navigate(path, { state: stateData });
-  const [modalShow, setModalShow] = useState(false);
 
   const { pathname } = useLocation();
-  // Get activeNav from Redux state
-  const activeNav = useSelector((state) => state.dashboard.activeNav);
-  // Get dispatch function
-  const dispatch = useDispatch();
-
-  // NEW HANDLER: For logging out
-  const handleLogout = () => {
-    // 1. Close the modal
-    setModalShow(false);
-    
-    // 2. Clear Redux state (e.g., user session)
-    // You would typically dispatch an action here to clear user authentication state
-    // dispatch(logoutUser()); 
-
-    // 3. Navigate to the initial page (e.g., home or login page)
-    navigate(INITIAL_PAGE_PATH);
-  };
+  const [activeNav, setActiveNav] = useState(propActiveNav);
 
   const handleNavClick = (title, path) => {
     path && navigateTo(path);
-    // Dispatch action to update Redux state
-    dispatch(setActiveNav(title));
-    
-    // NEW: Close the mobile menu if the function is provided (i.e., we are in the Offcanvas)
-    if (onCloseMobileMenu) {
-      onCloseMobileMenu();
-    }
+    setActiveNav(title);
+    onNavChange(title);
   };
 
   useEffect(() => {
     let newActiveNav = "Overview";
     const lowerPathname = pathname.toLowerCase();
 
-    if (lowerPathname.includes(settingsLink.path.toLowerCase())) {
+    if (lowerPathname.includes(settingsLink.path)) {
       newActiveNav = settingsLink.title;
     } else if (lowerPathname.includes("/dashboard/venues")) {
       newActiveNav = "Venues";
@@ -187,9 +84,9 @@ function DashboardPanel({ onCloseMobileMenu }) {
       newActiveNav = "Overview";
     }
 
-    // Dispatch the determined active navigation title
-    dispatch(setActiveNav(newActiveNav));
-  }, [pathname, dispatch]); // Added dispatch to dependency array
+    setActiveNav(newActiveNav);
+    onNavChange(newActiveNav);
+  }, [pathname, onNavChange]);
 
   const displayNavLinks = navLinks.map((nav, i) => {
     const { title, src, path } = nav;
@@ -282,25 +179,16 @@ function DashboardPanel({ onCloseMobileMenu }) {
               {settingsLink.title}
             </div>
           </div>
-          <div onClick={() => setModalShow(true)} className="d-flex align-items-center cursor p-3 ">
+          <div className="d-flex align-items-center cursor p-3 ">
             <img src={logout} alt="Logout" /> <div className="ms-2 txt-eb1">Logout</div>
           </div>
         </div>
       </div>
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        // MODIFIED: Pass the new handleLogout function
-        handleLogout={handleLogout}
-      />
     </div>
   );
 }
 
 export default DashboardPanel;
-
-
-
 
 
 
@@ -347,15 +235,12 @@ export default DashboardPanel;
 //     path: "/dashboard/events/all",
 //     src: events,
 //   },
+//   // {
+//   //   title: "Settings",
+//   //   path: "/dashboard/settings",
+//   //   src: budget,
+//   // },
 // ];
-
-// const settingsLink = {
-//   title: "Settings",
-//   path: "/dashboard/settings",
-//   src: settings,
-// };
-// const activeIconFilter =
-//   "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)"; // Calculated to approximate #A04D07
 
 // function DashboardPanel({ onNavChange, activeNav: propActiveNav }) {
 //   const navigate = useNavigate();
@@ -364,32 +249,21 @@ export default DashboardPanel;
 //   const { pathname } = useLocation();
 //   const [activeNav, setActiveNav] = useState(propActiveNav);
 
-//   const handleNavClick = (title, path) => {
-//     path && navigateTo(path);
-//     setActiveNav(title);
-//     onNavChange(title);
-//   };
-
 //   useEffect(() => {
 //     let newActiveNav = "Overview";
-//     const lowerPathname = pathname.toLowerCase();
-
-//     if (lowerPathname.includes(settingsLink.path)) {
-//       newActiveNav = settingsLink.title;
-//     } else if (lowerPathname.includes("/dashboard/venues")) {
+//     if (pathname.toLowerCase().includes("/dashboard/venues")) {
 //       newActiveNav = "Venues";
-//     } else if (lowerPathname.includes("/dashboard/invite")) {
+//     } else if (pathname.toLowerCase().includes("/dashboard/invite")) {
 //       newActiveNav = "Invite Card";
-//     } else if (lowerPathname.includes("/dashboard/budget")) {
+//     } else if (pathname.toLowerCase().includes("/dashboard/budget")) {
 //       newActiveNav = "Budget Plan";
-//     } else if (lowerPathname.includes("/dashboard/vendors")) {
+//     } else if (pathname.toLowerCase().includes("/dashboard/vendors")) {
 //       newActiveNav = "Vendors";
-//     } else if (lowerPathname.includes("/dashboard/events")) {
+//     } else if (pathname.toLowerCase().includes("/dashboard/events")) {
 //       newActiveNav = "Events";
-//     } else if (lowerPathname === "/dashboard" || lowerPathname === "/dashboard/") {
-//       newActiveNav = "Overview";
+//     } else if (pathname.toLowerCase().includes("/dashboard/settings")) {
+//       newActiveNav = "Settings";
 //     }
-
 //     setActiveNav(newActiveNav);
 //     onNavChange(newActiveNav);
 //   }, [pathname, onNavChange]);
@@ -399,7 +273,9 @@ export default DashboardPanel;
 //     const isActive = activeNav === title;
 
 //     const onNavClick = () => {
-//       handleNavClick(title, path);
+//       path && navigateTo(path);
+//       setActiveNav(title); // Update local state
+//       onNavChange(title); // Update state in Dashboard
 //     };
 
 //     return (
@@ -416,7 +292,9 @@ export default DashboardPanel;
 //           src={src}
 //           alt={title}
 //           style={{
-//             filter: isActive ? activeIconFilter : "",
+//             filter: isActive
+//               ? "invert(96%) sepia(93%) saturate(6000%) hue-rotate(26deg) brightness(96%) contrast(80%)"
+//               : "",
 //           }}
 //         />
 //         <div style={{ color: isActive ? "#A04D07" : "" }} className="ms-2">
@@ -425,10 +303,6 @@ export default DashboardPanel;
 //       </div>
 //     );
 //   });
-//   const isSettingsActive = activeNav === settingsLink.title;
-//   const onSettingsClick = () => {
-//     handleNavClick(settingsLink.title, settingsLink.path);
-//   };
 
 //   return (
 //     <div>
@@ -448,7 +322,6 @@ export default DashboardPanel;
 //               color: "#A04D07",
 //               margin: "31px 0px 90px 0px",
 //             }}
-//             alt="Logo"
 //           />
 //           <div
 //             className="gap-3 fw-500 fs-19 txt-73"
@@ -465,28 +338,12 @@ export default DashboardPanel;
 //             minWidth: "183px",
 //           }}
 //         >
-//           <div
-//             onClick={onSettingsClick}
-//             style={{
-//               borderLeft: isSettingsActive ? "2px #A04D07 solid" : undefined,
-//               padding: "10px 15px",
-//               color: isSettingsActive ? "#A04D07" : "",
-//             }}
-//             className="d-flex align-items-center cursor p-3"
-//           >
-//             <img
-//               src={settingsLink.src}
-//               alt={settingsLink.title}
-//               style={{
-//                 filter: isSettingsActive ? activeIconFilter : "",
-//               }}
-//             />
-//             <div style={{ color: isSettingsActive ? "#A04D07" : "" }} className="ms-2">
-//               {settingsLink.title}
-//             </div>
+//           <div className="d-flex align-items-center cursor p-3">
+//             <img src={settings} />
+//             <div className="ms-2">Setting</div>
 //           </div>
 //           <div className="d-flex align-items-center cursor p-3 ">
-//             <img src={logout} alt="Logout" /> <div className="ms-2 txt-eb1">Logout</div>
+//             <img src={logout} /> <div className="ms-2 txt-eb1">Logout</div>
 //           </div>
 //         </div>
 //       </div>

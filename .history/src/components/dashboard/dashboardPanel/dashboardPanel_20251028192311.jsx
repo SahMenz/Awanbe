@@ -129,7 +129,7 @@ const settingsLink = {
 const activeIconFilter =
   "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)";
 
-// MODIFIED: Accept onCloseMobileMenu prop
+// MODIFIED: Added onCloseMobileMenu prop
 function DashboardPanel({ onCloseMobileMenu }) {
   const navigate = useNavigate();
   // The root path is usually "/"
@@ -161,7 +161,8 @@ function DashboardPanel({ onCloseMobileMenu }) {
     // Dispatch action to update Redux state
     dispatch(setActiveNav(title));
     
-    // NEW: Close the mobile menu if the function is provided (i.e., we are in the Offcanvas)
+    // --- NEW LOGIC: Close the mobile menu after clicking a link ---
+    // The parent component must pass a function (onCloseMobileMenu) to hide the menu
     if (onCloseMobileMenu) {
       onCloseMobileMenu();
     }
@@ -298,7 +299,6 @@ function DashboardPanel({ onCloseMobileMenu }) {
 }
 
 export default DashboardPanel;
-
 
 
 

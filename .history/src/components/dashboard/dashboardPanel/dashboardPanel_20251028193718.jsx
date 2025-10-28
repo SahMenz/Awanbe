@@ -48,7 +48,6 @@ const navLinks = [
   },
 ];
 
-// MODIFIED: Added handleLogout prop
 function MyVerticallyCenteredModal(props) {
   const options = [
     { label: "Country", value: "Country" },
@@ -105,7 +104,6 @@ function MyVerticallyCenteredModal(props) {
             Cancel
           </button>
           <button 
-            // MODIFIED: Call the handleLogout function passed via props
             onClick={props.handleLogout}
             style={{border: "1px solid #A04D07",
               borderRadius: "15px",
@@ -129,7 +127,7 @@ const settingsLink = {
 const activeIconFilter =
   "invert(28%) sepia(82%) saturate(913%) hue-rotate(345deg) brightness(89%) contrast(92%)";
 
-// MODIFIED: Accept onCloseMobileMenu prop
+// MODIFIED: Added onCloseMobileMenu prop
 function DashboardPanel({ onCloseMobileMenu }) {
   const navigate = useNavigate();
   // The root path is usually "/"
@@ -148,11 +146,15 @@ function DashboardPanel({ onCloseMobileMenu }) {
     // 1. Close the modal
     setModalShow(false);
     
-    // 2. Clear Redux state (e.g., user session)
-    // You would typically dispatch an action here to clear user authentication state
+    // 2. Close the mobile menu (if it exists)
+    if (onCloseMobileMenu) {
+        onCloseMobileMenu();
+    }
+    
+    // 3. Clear Redux state (e.g., user session)
     // dispatch(logoutUser()); 
 
-    // 3. Navigate to the initial page (e.g., home or login page)
+    // 4. Navigate to the initial page (e.g., home or login page)
     navigate(INITIAL_PAGE_PATH);
   };
 
@@ -161,9 +163,9 @@ function DashboardPanel({ onCloseMobileMenu }) {
     // Dispatch action to update Redux state
     dispatch(setActiveNav(title));
     
-    // NEW: Close the mobile menu if the function is provided (i.e., we are in the Offcanvas)
+    // NEW: Close the mobile menu after navigation
     if (onCloseMobileMenu) {
-      onCloseMobileMenu();
+        onCloseMobileMenu();
     }
   };
 
@@ -225,6 +227,7 @@ function DashboardPanel({ onCloseMobileMenu }) {
   const isSettingsActive = activeNav === settingsLink.title;
   const onSettingsClick = () => {
     handleNavClick(settingsLink.title, settingsLink.path);
+    // Note: handleNavClick already calls onCloseMobileMenu
   };
 
   return (
@@ -282,6 +285,7 @@ function DashboardPanel({ onCloseMobileMenu }) {
               {settingsLink.title}
             </div>
           </div>
+          {/* Note: Logout button click should also close the mobile menu */}
           <div onClick={() => setModalShow(true)} className="d-flex align-items-center cursor p-3 ">
             <img src={logout} alt="Logout" /> <div className="ms-2 txt-eb1">Logout</div>
           </div>
@@ -290,7 +294,6 @@ function DashboardPanel({ onCloseMobileMenu }) {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        // MODIFIED: Pass the new handleLogout function
         handleLogout={handleLogout}
       />
     </div>
@@ -298,7 +301,6 @@ function DashboardPanel({ onCloseMobileMenu }) {
 }
 
 export default DashboardPanel;
-
 
 
 

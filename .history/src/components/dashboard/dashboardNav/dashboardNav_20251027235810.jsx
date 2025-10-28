@@ -1,35 +1,23 @@
 import { BiBell, BiCart, BiHeart, BiSearch } from "react-icons/bi";
-import { CgProfile } from "react-icons/cg";
+import { CgProfile } from "react-icons/cg"; // Import for default icon
+import profile from "../../../assets/images/profile.svg"; // Still keep the default import if used for other things
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useSelector } from "react-redux"; // Import useSelector
 
 function DashboardNav({ title }) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  
-  const navigate = useNavigate(); // Initialize useNavigate hook
 
   // --- REDUX STATE ACCESS ---
   // Get profile image from the userProfile slice
   const profileImage = useSelector((state) => state.userProfile.profileImage);
-  
-  // Handler to navigate to settings
-  const handleProfileClick = () => {
-    // Navigate to the settings route (e.g., '/dashboard/settings')
-    // Adjust the path to your actual settings route
-    navigate("/dashboard/settings"); 
-    // Close the offcanvas if it's open (important for mobile UX)
-    handleClose(); 
-  };
 
   // Component for the profile picture (used in both desktop and offcanvas)
   const ProfilePicture = () => (
     <div 
       className="cursor" 
-      onClick={handleProfileClick} // Add the onClick handler here
       style={{ 
         width: "40px", 
         height: "40px", 
@@ -139,6 +127,10 @@ function DashboardNav({ title }) {
 }
 
 export default DashboardNav;
+
+
+
+
 
 // import { BiBell, BiCart, BiHeart, BiSearch } from "react-icons/bi";
 // import profile from "../../../assets/images/profile.svg";

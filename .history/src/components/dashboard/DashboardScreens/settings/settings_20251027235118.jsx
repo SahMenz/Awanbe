@@ -130,12 +130,7 @@ function Settings() {
           style={{ border: "0.2px solid #737373", borderRadius: "24px", padding: "8px 16px" }}
         >
           <div className="d-flex align-items-center">
-            <div style={{width: "60px", 
-              height: "60px", 
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center" ,borderRadius: "50%" }}>
+            <div style={{ maxWidth: "65px", maxHeight: "65px", overflow: "hidden", borderRadius: "50%" }}>
               {/* Display profile image from Redux state */}
               {profileImage ? (
                 <img

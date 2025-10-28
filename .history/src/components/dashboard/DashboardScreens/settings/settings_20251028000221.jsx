@@ -131,11 +131,11 @@ function Settings() {
         >
           <div className="d-flex align-items-center">
             <div style={{width: "60px", 
-              height: "60px", 
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center" ,borderRadius: "50%" }}>
+        height: "60px", 
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center" ,borderRadius: "50%" }}>
               {/* Display profile image from Redux state */}
               {profileImage ? (
                 <img
@@ -148,6 +148,29 @@ function Settings() {
                 <CgProfile size={65} />
               )}
             </div>
+            <div 
+      className="cursor" 
+      style={{ 
+        width: "40px", 
+        height: "40px", 
+        borderRadius: "50%", 
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {profileImage ? (
+        <img
+          src={profileImage}
+          alt="Profile"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      ) : (
+        // Fallback to CgProfile icon if no image is set in Redux
+        <CgProfile size={40} color="#000000" /> 
+      )}
+    </div>
             <div className="ms-2">
               {/* Display full name from Redux state */}
               <div className="fs-19 fw-500 txt-a0">{userFullName}</div> 
