@@ -1,0 +1,65 @@
+/* Base styles for all NavLinks */
+.nav-link-item,
+.nav-link-item-mobile {
+  position: relative; /* Needed for the ::after pseudo-element */
+  color: #737373 !important; /* Default inactive color (txt-73) */
+  transition: color 0.3s ease-in-out; /* Smooth transitions for color */
+  text-decoration: none !important; 
+  padding-bottom: 5px; /* Space for the underline */
+}
+
+/* ------------------------------------------- */
+/* 1. DESKTOP NAVIGATION LINKS (.nav-link-item) */
+/* ------------------------------------------- */
+
+/* Active and Hover Text Color */
+.nav-link-item:hover,
+.nav-link-item.active {
+  color: #A04D07 !important; /* Active color (txt-a0) */
+}
+
+/* Animated Underline (::after pseudo-element) */
+.nav-link-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Start in the middle */
+  transform: translateX(-50%);
+  width: 0; /* Initially hidden, addressing the "permanent line" concern */
+  height: 2px;
+  background-color: #A04D07; /* Active color */
+  /* Increased duration (0.4s) and refined cubic-bezier for a more pronounced, smooth swipe animation */
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.5, 1.2); 
+}
+
+/* Show Underline on Hover and Active */
+.nav-link-item:hover::after,
+.nav-link-item.active::after {
+  width: 100%; /* Expand to full width */
+}
+
+
+/* ------------------------------------------- */
+/* 2. MOBILE NAVIGATION LINKS (.nav-link-item-mobile) */
+/* ------------------------------------------- */
+
+.nav-link-item-mobile {
+  color: #737373 !important; /* Default text color */
+  padding: 10px 0; /* Add padding for larger touch target */
+  width: 100%; /* Make link full width for better highlight */
+  text-align: center;
+  /* Enhanced transition for color, weight, and background color */
+  transition: color 0.3s ease, font-weight 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px; /* Soft corners for the highlight */
+  font-size: 16px; /* Ensure font size is consistent */
+  line-height: 1.2; /* Ensure line height is consistent */
+}
+
+/* Active and Hover State for Mobile - Color change, bold font, and soft background highlight */
+.nav-link-item-mobile:hover,
+.nav-link-item-mobile.active {
+  color: #A04D07 !important; /* Active color */
+  font-weight: 700; 
+  /* Added a light, semi-transparent background color for a nice visual highlight on hover/active */
+  background-color: rgba(160, 77, 7, 0.1); 
+}

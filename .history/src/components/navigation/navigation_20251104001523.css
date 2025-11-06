@@ -1,0 +1,88 @@
+/* Base styles for all NavLinks */
+.nav-link-item,
+.nav-link-item-mobile {
+  position: relative; /* Needed for the ::after pseudo-element */
+  color: #737373 !important; /* Default color */
+  transition: color 0.3s ease-in-out; /* Smooth color change on hover/active */
+  text-decoration: none; /* Ensure no underline by default */
+}
+
+/* ------------------------------------------- */
+/* 1. DESKTOP NAVIGATION LINKS (.nav-link-item) */
+/* ------------------------------------------- */
+
+.nav-link-item::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Position the underline below the text */
+  left: 50%; /* Start in the middle */
+  transform: translateX(-50%);
+  width: 0; /* Initially hidden */
+  height: 2px;
+  background-color: #A04D07; /* Active/Hover color */
+  transition: width 0.3s ease-out; /* Animation for the underline */
+}
+
+/* HOVER State */
+.nav-link-item:hover {
+  color: #A04D07 !important; /* Change text color on hover */
+}
+
+.nav-link-item:hover::after {
+  width: 100%; /* Swipe animation on hover */
+}
+
+/* ACTIVE State (when the link is the current route) */
+.nav-link-item.active {
+  color: #A04D07 !important; /* Set active text color */
+}
+
+.nav-link-item.active::after {
+  width: 100%; /* Keep the underline fully visible when active */
+}
+
+
+/* ------------------------------------------- */
+/* 2. MOBILE NAVIGATION LINKS (.nav-link-item-mobile) */
+/* ------------------------------------------- */
+
+/* Mobile links are styled differently, mostly focusing on color change */
+
+.nav-link-item-mobile {
+  color: #737373 !important; /* Default mobile color */
+  /* Mobile hover/active style uses a slightly darker text color for visibility */
+}
+
+/* HOVER State for Mobile (mostly applies to larger touch devices/mouse) */
+.nav-link-item-mobile:hover {
+  color: #A04D07 !important;
+}
+
+/* ACTIVE State for Mobile */
+.nav-link-item-mobile.active {
+  color: #A04D07 !important;
+  /* You can add a background or border here if desired for mobile */
+}
+
+/* Removing the utility classes that were inline */
+.txt-73 {
+    color: #737373;
+}
+.txt-a0 {
+    color: #A04D07;
+}
+.bg-a0 {
+    background-color: #A04D07;
+}
+.bg-trans {
+    background-color: transparent;
+}
+.txt-ff {
+    color: #FFFFFF;
+}
+.bg-ff {
+    background-color: #FFFFFF;
+}
+.container-adjustment {
+    padding: 10px 15px; /* Adjust padding if needed for fixed-top */
+}

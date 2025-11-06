@@ -1,0 +1,36 @@
+.heightAdjustment {
+  height: 50vh;
+}
+.container-adjustment-special-case {
+  padding: 26px 30px;
+}
+@media (max-width: 1024px) {
+  .container-adjustment-special-case {
+    padding: 10px 10px;
+  }
+}
+.iconShrink {
+  width: 57px;
+}
+.arrowShrink {
+  width: 80px;
+}
+.styling-gap {
+  height: 40vh;
+  max-height: 80px;
+}
+@media (max-width: 578px) {
+  .styling-gap {
+    height: 90vh;
+    max-height: 180px;
+  }
+  .margin-top-gap1{
+    margin-top: 100px;
+  }
+  .margin-top-gap2{
+    margin-top: 100px;
+  }
+  .margin-top-gap3{
+    margin-top: 100px;
+  }
+}

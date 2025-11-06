@@ -1,0 +1,25 @@
+.heightAdjustment {
+  height: 50vh;
+}
+.container-adjustment-special-case {
+  padding: 26px 30px;
+}
+@media (max-width: 1024px) {
+  .container-adjustment-special-case {
+    padding: 10px 10px;
+  }
+  .styling-gap {
+      height: 80vh;
+    max-height: 1700px;
+  }
+}
+.iconShrink {
+  width: 57px;
+}
+.arrowShrink {
+  width: 80px;
+}
+.styling-gap {
+  height: 40vh;
+  max-height: 80px;
+}

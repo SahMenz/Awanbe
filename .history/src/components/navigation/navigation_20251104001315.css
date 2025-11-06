@@ -1,0 +1,94 @@
+/*
+  Define the primary colors for easy maintenance
+*/
+:root {
+  --primary-color: #A04D07;
+  --secondary-color: #737373;
+  --text-color: #000000;
+  --white-color: #ffffff;
+}
+
+/*
+  --- 1. DESKTOP NAVIGATION LINKS (d-lg-flex d-none) ---
+*/
+
+/* Base style for the NavLinks (default color and transition) */
+.nav-link-animated {
+  color: var(--secondary-color) !important;
+  position: relative;
+  transition: color 0.3s ease; /* Smooth color transition */
+  padding-bottom: 5px; /* Space for the underline */
+}
+
+/* Hover State: Color change and underline animation */
+.nav-link-animated:hover {
+  color: var(--primary-color) !important;
+}
+
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px; /* Thickness of the underline */
+  background-color: var(--primary-color);
+  transition: width 0.3s ease; /* Animate the underline width */
+}
+
+.nav-link-animated:hover::after {
+  width: 100%; /* Show underline on hover */
+}
+
+/* Active State: Always primary color and underline fully visible */
+.nav-link-animated.nav-active-link {
+  color: var(--primary-color) !important;
+}
+
+.nav-link-animated.nav-active-link::after {
+  width: 100%; /* Ensure underline is visible when active */
+}
+
+
+/*
+  --- 2. BUTTONS (Sign In / Sign Up) ---
+*/
+
+/* General button transition for scale */
+.button-animated {
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.button-animated-primary {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Button Hover State */
+.button-animated:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  background-color: var(--primary-color) !important;
+  color: var(--white-color) !important;
+}
+
+/* Primary Button Hover State (Sign Up) */
+.button-animated-primary:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  opacity: 0.9; /* Subtle change */
+}
+
+
+/*
+  --- 3. MOBILE/OFFCANVAS LINKS ---
+*/
+
+.mobile-nav-link {
+    color: var(--secondary-color) !important;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.mobile-nav-active {
+    color: var(--primary-color) !important;
+    transform: translateX(5px); /* Subtle shift on active/hover */
+    transition: all 0.2s ease;
+}
